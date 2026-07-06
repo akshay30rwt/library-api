@@ -6,7 +6,7 @@ const addBook = async (req, res, next) => {
         const { title, author, genre, year, pages } = req.body;
 
         const book = new Book({ title, author, genre, year, pages });
-        await book.save;
+        await book.save();
 
         return res.status(201).json({
             message: 'Book added to library',
@@ -93,10 +93,10 @@ const searchBookByTitle = async (req, res, next) => {
         const { title } = req.query;
 
         const book = await Book.find({
-            title: { $regex: title, $options: i }
+            title: { $regex: title, $options: 'i' }
         });
 
-        if(!book) {
+        if(book.length === 0) {
             throw new AppError(`There is no book with Title: ${title}`, 404);
         }
 

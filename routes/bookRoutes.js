@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const validate = require('../middleware/validate');
-const bookSchema = require('../validators/bookValidator');
+const { bookSchema } = require('../validators/bookValidator');
 
 const { addBook, getAllBooks, getBookById, updateBook, deleteBook, searchBookByTitle, filterBooksByGenre } = require('../controllers/bookController');
 
